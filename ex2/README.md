@@ -21,7 +21,7 @@ SELECT ProductID, ProductName FROM Products WHERE UnitPrice < 5.00;
 -- 33   Geitost
 
 -- Which categories have a category name with initials beginning with B or S?
-SELECT * FROM Categories Where CategoryName LIKE '[BS]%';
+SELECT * FROM Categories WHERE CategoryName LIKE '[BS]%';
 -- Beverages
 -- Seafood
 
@@ -32,4 +32,6 @@ SELECT COUNT(*) FROM Orders WHERE EmployeeID = 5 OR EmployeeID = 7;
 -- Write a SELECT using the Employees table and concatenate First Name and Last Name together. Use a column alias to rename the column Name.
 SELECT FirstName + ' ' + LastName As 'Name' FROM Employees;
 
+-- Write a SELECT statement to list the six countries that have Region Codes in the Customers Table. 
+SELECT DISTINCT(Country) FROM Customers WHERE Region LIKE '%';
 ```
