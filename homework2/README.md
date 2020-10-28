@@ -37,3 +37,36 @@ Q6
 SELECT * FROM Customers WHERE City = 'Paris';
 #2
 ```
+
+Q7
+```
+SELECT TOP 5 COUNT(Orders.OrderID) AS 'Number of Orders', Customers.CompanyName, Customers.CustomerID
+FROM Orders
+RIGHT JOIN Customers ON Orders.CustomerID =  Customers.CustomerID
+WHERE Customers.City = 'Paris'
+GROUP BY Customers.CustomerID,
+        Customers.CompanyName
+ORDER BY Count(Orders.OrderID) DESC;
+#2
+```
+
+Q8
+```
+SELECT
+    Customers.CustomerID,
+    Customers.CompanyName,
+    Customers.ContactName,
+    Customers.Phone,
+    Customers.Fax,
+    COUNT(Orders.OrderID) AS 'Overdue_Orders'
+FROM Customers
+INNER JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+WHERE Orders.ShippedDate - Orders.RequiredDate > 10 AND Customers.City = 'Paris'
+GROUP BY
+    Customers.CustomerID,
+    Customers.CompanyName,
+    Customers.ContactName,
+    Customers.Phone,
+    Customers.Fax
+ORDER BY count(Orders.OrderID) DESC;
+```
